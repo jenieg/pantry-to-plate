@@ -3,7 +3,7 @@ const Main = () => {
         <main className="h-9 pt-7 px-7">
             <form 
                 action="POST"
-                className="flex flex-grow justify-center gap-3"
+                className="flex flex-col sm:flex-row sm:flex-grow justify-center gap-3"
             >
                 <input 
                     aria-label="Add Ingredient"
@@ -12,7 +12,8 @@ const Main = () => {
                     className="rounded-md shadow" 
                 />
                 <button
-                    className="rounded-md shadow border-none bg-green-800 text-white w-36 text-sm font-medium"
+                    className="p-3 rounded-md shadow border-none bg-green-800 text-white text-sm font-medium
+                                "
                 >Add Ingredient</button>
             </form>
         </main>
