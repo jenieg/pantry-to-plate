@@ -12,8 +12,7 @@ const Main = () => {
                     className="rounded-md shadow" 
                 />
                 <button
-                    className="p-3 rounded-md shadow border-none bg-green-800 text-white text-sm font-medium
-                                "
+                    className="p-3 rounded-md shadow border-none bg-green-800 text-white text-sm font-medium"
                 >Add Ingredient</button>
             </form>
         </main>
