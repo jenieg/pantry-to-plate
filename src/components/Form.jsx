@@ -8,9 +8,7 @@ const Main = () => {
         <li className="px-3 py-1 bg-gray-200 rounded-md shadow" key={ingredient}>{ingredient}</li>
     ));
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+    function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
 
         setIngredients(prevIngredients => [...prevIngredients, newIngredient])
@@ -19,8 +17,7 @@ const Main = () => {
     return (
         <main className="max-w-5xl pt-7 px-7">
             <form 
-                action="POST"
-                onSubmit={handleSubmit}
+                action={addIngredient}
                 className="flex flex-col sm:flex-row sm:flex-grow justify-center gap-3"
             >
                 <input 
