@@ -38,13 +38,13 @@ const Main = () => {
                     {ingredientsListItems}
                 </ul>
 
-                <div className="mt-10 sm:w-max flex sm:flex-row flex-col justify-between items-center rounded-lg bg-gray-200 px-5 py-2.5">
+                {ingredients.length > 3 && <div className="mt-10 sm:w-max flex sm:flex-row flex-col justify-between items-center rounded-lg bg-gray-200 px-5 py-2.5">
                     <div className="sm:mr-20 mr-0 mb-3 sm:mb-0 text-center sm:text-left">
                         <h3 className="text-md font-medium leading-6">Ready for a recipe?</h3>
                         <p className="text-gray-500 text-sm leading-5">Generate a recipe from your list of ingredients.</p>
                     </div>
                     <button className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button>
-                </div>
+                </div>}
             </section>}
 
         </main>
