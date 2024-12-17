@@ -32,11 +32,11 @@ const Main = () => {
                 >Add Ingredient</button>
             </form>
 
-            <div className="flex justify-center">
+            <section className="flex justify-center">
                 <ul className="max-w-3xl flex flex-wrap justify-center items-center gap-3 mt-5">
                     {ingredientsListItems}
                 </ul>
-            </div>
+            </section>
 
         </main>
     );
