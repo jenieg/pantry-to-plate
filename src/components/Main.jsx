@@ -1,17 +1,25 @@
 import React from "react";
+import Recipe from "./Recipe";
 
 const Main = () => {
-
-    const [ingredients, setIngredients] = React.useState([])
-
+    //Ingredients
+    const [ingredients, setIngredients] = React.useState(["all the main spices", "pasta", "ground beef", "tomato paste"])
+    
     const ingredientsListItems = ingredients.map(ingredient => (
         <li className="px-3 py-1 bg-gray-100 rounded-md shadow" key={ingredient}>{ingredient}</li>
     ));
-
+    
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
-
+        
         setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+    }
+    
+    //Recipe
+    const [recipeShown, setRecipeShown] = React.useState(false)
+    
+    function handleClick() {
+        setRecipeShown(prev => !prev);
     }
 
     return (
@@ -43,10 +51,12 @@ const Main = () => {
                         <h3 className="text-md font-medium leading-6">Ready for a recipe?</h3>
                         <p className="text-gray-500 text-sm leading-5">Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button>
+
+                    <button onClick={handleClick} className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button>
                 </div>}
             </section>}
 
+            {recipeShown && <Recipe />}
         </main>
     );
 };
