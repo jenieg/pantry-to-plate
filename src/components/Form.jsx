@@ -5,7 +5,7 @@ const Main = () => {
     const [ingredients, setIngredients] = React.useState([])
 
     const ingredientsListItems = ingredients.map(ingredient => (
-        <li className="px-3 py-1 bg-gray-200 rounded-md shadow" key={ingredient}>{ingredient}</li>
+        <li className="px-3 py-1 bg-gray-100 rounded-md shadow" key={ingredient}>{ingredient}</li>
     ));
 
     function addIngredient(formData) {
@@ -15,7 +15,7 @@ const Main = () => {
     }
 
     return (
-        <main className="max-w-5xl pt-7 px-7">
+        <main className="max-w-7xl pt-7 px-7 flex flex-col items-center">
             <form 
                 action={addIngredient}
                 className="flex flex-col sm:flex-row sm:flex-grow justify-center gap-3"
@@ -32,11 +32,20 @@ const Main = () => {
                 >Add Ingredient</button>
             </form>
 
-            <section className="flex justify-center">
+            {ingredients.length > 0 && 
+            <section aria-live="polite" className="flex flex-col justify-center mt-3">
                 <ul className="max-w-3xl flex flex-wrap justify-center items-center gap-3 mt-5">
                     {ingredientsListItems}
                 </ul>
-            </section>
+
+                {ingredients.length > 3 && <div className="mt-10 sm:w-max flex sm:flex-row flex-col justify-between items-center rounded-lg bg-gray-200 px-5 py-2.5">
+                    <div className="sm:mr-20 mr-0 mb-3 sm:mb-0 text-center sm:text-left">
+                        <h3 className="text-md font-medium leading-6">Ready for a recipe?</h3>
+                        <p className="text-gray-500 text-sm leading-5">Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button>
+                </div>}
+            </section>}
 
         </main>
     );
