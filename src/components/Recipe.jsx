@@ -1,15 +1,14 @@
 const Recipe = () => {
     return (
-        <section>
-            <h2>Recommended Recipe:</h2>
-            <article className="suggested-recipe-container" aria-live="polite">
-                <p>
-                    Based on the ingredients you have available, I would
-                    recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:
+        <section className="max-w-3xl mt-7 px-5 py-5">
+            <h2 className="text-xl font-bold text-gray-800 mb-5">Beef Bolognese Pasta</h2>
+            <article className="text-gray-700" aria-live="polite">
+                <p className="mb-5">
+                    I recommend making a simple a delicious Beef Bolognese Pasta. Here is the recipe:
                 </p>
-                <h3>Beef Bolognese Pasta</h3>
-                <strong>Ingredients:</strong>
-                <ul>
+
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Ingredients:</h3>
+                <ul className="list-disc list-inside space-y-2 mb-5">
                     <li>1 lb. ground beef</li>
                     <li>1 onion, diced</li>
                     <li>3 cloves garlic, minced</li>
@@ -24,8 +23,9 @@ const Recipe = () => {
                         linguine)
                     </li>
                 </ul>
-                <strong>Instructions:</strong>
-                <ol>
+
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Instructions:</h3>
+                <ol className="list-decimal list-inside space-y-2">
                     <li>
                         Bring a large pot of salted water to a boil for the
                         pasta.
