@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Ingredients = (props) => {
     const ingredientsListItems = props.ingredients.map(ingredient => (
         <li className="px-3 py-1 bg-gray-100 rounded-md shadow" key={ingredient}>{ingredient}</li>
