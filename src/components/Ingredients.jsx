@@ -15,7 +15,7 @@ const Ingredients = (props) => {
                 <p className="text-gray-500 text-sm leading-5">Generate a recipe with your list of ingredients.</p>
             </div>
 
-            {/* <button onClick={props.handleClick} className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button> */}
+            <button onClick={props.handleClick} className="border-none rounded-md bg-red-500 shadow-sm text-white px-4 py-2 text-sm cursor-pointer">Get a recipe</button>
         </div>}
     </section>
     );

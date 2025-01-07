@@ -37,7 +37,10 @@ const Main = () => {
             </form>
 
             {ingredients.length > 0 && 
-                <Ingredients ingredients={ingredients}/>}
+                <Ingredients 
+                    ingredients={ingredients} 
+                    handleClick={handleClick}
+                />}
 
             {recipeShown && <Recipe />}
         </main>
