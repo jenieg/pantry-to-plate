@@ -1,6 +1,7 @@
 import React from "react";
 import Ingredients from "./Ingredients";
 import Recipe from "./Recipe";
+import { getRecipeFromMistral } from "../api/ai"
 
 const Main = () => {
     //Ingredients
@@ -19,10 +20,10 @@ const Main = () => {
     }
 
     return (
-        <main className="max-w-7xl pt-7 px-7 flex flex-col items-center">
+        <main className="max-w-7xl pt-7 px-7 flex flex-col justify-center items-center">
             <form 
                 action={addIngredient}
-                className="flex flex-col sm:flex-row sm:flex-grow justify-center gap-3"
+                className="flex flex-col w-full sm:flex-row sm:flex-grow sm:justify-center gap-3"
             >
                 <input 
                     name="ingredient"
