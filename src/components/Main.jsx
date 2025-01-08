@@ -1,28 +1,39 @@
 import React from "react";
 import Ingredients from "./Ingredients";
 import Recipe from "./Recipe";
+import { getRecipeFromMistral } from "../api/ai"
 
 const Main = () => {
-    //Ingredients
-    const [ingredients, setIngredients] = React.useState(["all the main spices", "pasta", "ground beef", "tomato paste"])
+    //Ingredients State
+    const [ingredients, setIngredients] = React.useState([])
 
+    //Recipe and visibility state
+    const [recipeMarkdown, setRecipeMarkdown] = React.useState("");
     const [recipeShown, setRecipeShown] = React.useState(false)
     
+    //add ingredient function
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
-        
         setIngredients(prevIngredients => [...prevIngredients, newIngredient])
     }
 
-    function handleClick() {
-        setRecipeShown(prevShown => !prevShown);
+    //button click function
+    async function handleClick() {
+        try {
+          // Fetch the recipe with ingredients stored in state
+            const recipe = await getRecipeFromMistral(ingredients);
+            setRecipeMarkdown(recipe); // Store the markdown response
+            setRecipeShown(true); // Show the Recipe component
+        } catch (error) {
+            console.error("Error fetching recipe:", error);
+        }
     }
 
     return (
-        <main className="max-w-7xl pt-7 px-7 flex flex-col items-center">
+        <main className="max-w-7xl pt-7 px-7 flex flex-col justify-center items-center">
             <form 
                 action={addIngredient}
-                className="flex flex-col sm:flex-row sm:flex-grow justify-center gap-3"
+                className="flex flex-col w-full sm:flex-row sm:flex-grow sm:justify-center gap-3"
             >
                 <input 
                     name="ingredient"
@@ -42,7 +53,7 @@ const Main = () => {
                     handleClick={handleClick}
                 />}
 
-            {recipeShown && <Recipe />}
+            {recipeShown && <Recipe markdown={recipeMarkdown}/>}
         </main>
     );
 };
