@@ -8,8 +8,7 @@ const Main = () => {
     const [ingredients, setIngredients] = React.useState([])
 
     //Recipe and visibility state
-    const [recipeMarkdown, setRecipeMarkdown] = React.useState("");
-    const [recipeShown, setRecipeShown] = React.useState(false)
+    const [recipe, setRecipe] = React.useState("");
     
     //add ingredient function
     function addIngredient(formData) {
@@ -21,9 +20,8 @@ const Main = () => {
     async function handleClick() {
         try {
           // Fetch the recipe with ingredients stored in state
-            const recipe = await getRecipeFromMistral(ingredients);
-            setRecipeMarkdown(recipe); // Store the markdown response
-            setRecipeShown(true); // Show the Recipe component
+            const recipeMarkdown = await getRecipeFromMistral(ingredients);
+            setRecipe(recipeMarkdown); // Store the markdown response
         } catch (error) {
             console.error("Error fetching recipe:", error);
         }
@@ -53,7 +51,7 @@ const Main = () => {
                     handleClick={handleClick}
                 />}
 
-            {recipeShown && <Recipe markdown={recipeMarkdown}/>}
+            {recipe && <Recipe recipe={recipe}/>}
         </main>
     );
 };
