@@ -45,11 +45,11 @@ const Main = () => {
                 >Add Ingredient</button>
             </form>
 
-            {ingredients.length > 0 && 
+            
                 <Ingredients 
                     ingredients={ingredients} 
                     handleClick={handleClick}
-                />}
+                />
 
             {recipe && <Recipe recipe={recipe}/>}
         </main>
