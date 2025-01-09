@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 const Ingredients = (props) => {
+    // map over ingredient list and create li for each
     const ingredientsListItems = props.ingredients.map((ingredient) => (
         <li
             className="px-3 py-1 bg-gray-100 rounded-md shadow"
@@ -14,10 +15,12 @@ const Ingredients = (props) => {
             aria-live="polite"
             className="flex flex-col items-center mt-3 w-full"
         >
+            {/*list of ingredients */}
             <ul className="max-w-3xl flex flex-wrap justify-center gap-3 mt-5">
                 {ingredientsListItems}
             </ul>
 
+            {/* get recipe section */}
             {props.ingredients.length < 4 ? (
                 <div className="mt-10 w-full max-w-lg text-center rounded-lg bg-gray-200 px-5 py-2.5">
                     <p className="text-gray-500 text-sm leading-5">

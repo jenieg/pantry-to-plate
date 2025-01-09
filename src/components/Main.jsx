@@ -37,6 +37,7 @@ const Main = () => {
 
     return (
         <main className="max-w-7xl pt-7 px-7 flex flex-col justify-center items-center">
+            {/* Add ingredient form */}
             <form 
                 action={addIngredient}
                 className="flex flex-col w-full sm:flex-row sm:flex-grow sm:justify-center gap-3"
@@ -53,13 +54,14 @@ const Main = () => {
                 >Add Ingredient</button>
             </form>
 
-            
-                <Ingredients 
-                    ingredients={ingredients} 
-                    handleClick={handleClick}
-                    loading={loading}
-                />
+            {/* Ingredient list & get recipe button */}
+            <Ingredients 
+                ingredients={ingredients} 
+                handleClick={handleClick}
+                loading={loading}
+            />
 
+            {/* formated recipe  */}
             {recipe && <Recipe recipe={recipe}/>}
         </main>
     );
