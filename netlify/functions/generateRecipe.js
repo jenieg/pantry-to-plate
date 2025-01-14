@@ -6,19 +6,21 @@ You are an assistant that receives a list of ingredients that a user has and sug
 `;
 
 exports.handler = async (event) => {
+    console.log("Function triggered");
     try {
-        //parse req body
-        const {ingredients} = JSON.parse(event.body)
+        // Parse the request body
+        const { ingredients } = JSON.parse(event.body);
+        console.log("Received ingredients:", ingredients);
 
-        //if ingredient empty or invalid, err
+        // Check for valid ingredients
         if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({error: "Invalid or Misssing Ingredients"})
-            }
+                body: JSON.stringify({ error: "Invalid or Missing Ingredients" }),
+            };
         }
 
-        //get key from .env
+        // Get the API key from environment variables
         const HF_API_KEY = process.env.HF_API_KEY;
         if (!HF_API_KEY) {
             return {
@@ -27,13 +29,16 @@ exports.handler = async (event) => {
             };
         }
 
-        //initalize hf inference client
-        const hf = new HfInference(HF_API_KEY)
+        console.log("Using Hugging Face API Key:", HF_API_KEY ? "Valid Key" : "Missing Key");  // Log API key check
 
-        //prepare ingredient string
-        const ingredientsString = ingredients.join(", ")
+        // Initialize Hugging Face Inference Client
+        const hf = new HfInference(HF_API_KEY);
 
-         // Call the Hugging Face API with prompt and ingredient string
+        // Prepare the ingredients string
+        const ingredientsString = ingredients.join(", ");
+        console.log("Prepared Ingredients String:", ingredientsString);  // Log ingredients string
+
+        // Call the Hugging Face API
         const response = await hf.chatCompletion({
             model: "mistralai/Mistral-Nemo-Instruct-2407",
             messages: [
@@ -43,7 +48,9 @@ exports.handler = async (event) => {
             max_tokens: 1024,
         });
 
-        // Return the recipe in the response
+        console.log("Response from Hugging Face API:", response);  // Log API response
+
+        // Return the recipe
         return {
             statusCode: 200,
             body: JSON.stringify({ recipe: response.choices[0].message.content }),
@@ -55,4 +62,4 @@ exports.handler = async (event) => {
             body: JSON.stringify({ error: error.message }),
         };
     }
-}
+};
