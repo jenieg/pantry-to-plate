@@ -5,10 +5,10 @@ import Main from './components/Main'
 function App() {
 
   return (
-    <>
+    <div className='max-w-7xl mx-auto'>
       <Header />
       <Main />
-    </>
+    </div>
   )
 }
 
