@@ -39,7 +39,16 @@ const Main = () => {
     <main className='w-full pt-7 px-7 flex flex-col justify-center items-center'>
       {/* Add ingredient form */}
       <form action={addIngredient} className='flex flex-col w-full sm:flex-row sm:flex-grow sm:justify-center gap-3'>
-        <input name='ingredient' aria-label='Add Ingredient' placeholder='e.g. oregano' type='text' className='rounded-md shadow' />
+        <input
+          name='ingredient'
+          aria-label='Add Ingredient'
+          placeholder='e.g. oregano'
+          type='text'
+          className='rounded-md shadow'
+          required
+          maxLength={25}
+          minLength={2}
+        />
         <button className='p-3 rounded-md shadow border-none bg-green-800 text-white text-sm font-medium'>Add Ingredient</button>
       </form>
 
