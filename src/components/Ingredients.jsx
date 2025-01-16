@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
-const Ingredients = ({ ingredients, handleClick, loading }) => {
+const Ingredients = ({ ingredients, handleClick, handleDelete, loading }) => {
   // map over ingredient list and create li for each
   const ingredientsListItems = ingredients.map((ingredient) => (
-    <li className='px-3 py-1 bg-gray-100 rounded-md shadow' key={ingredient}>
-      {ingredient}
+    <li className='px-3 py-1 bg-gray-100 rounded-md shadow flex items-center justify-center gap-3' key={ingredient}>
+      <p>{ingredient}</p>
+      <button onClick={() => handleDelete(ingredient)}>
+        <svg height='16' viewBox='0 0 8 10' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <path
+            d='M1.5 9.5C1.225 9.5 0.989667 9.40217 0.794 9.2065C0.598333 9.01083 0.500333 8.77533 0.5 8.5V2H0V1H2.5V0.5H5.5V1H8V2H7.5V8.5C7.5 8.775 7.40217 9.0105 7.2065 9.2065C7.01083 9.4025 6.77533 9.50033 6.5 9.5H1.5ZM2.5 7.5H3.5V3H2.5V7.5ZM4.5 7.5H5.5V3H4.5V7.5Z'
+            fill='#6b7280'
+          />
+        </svg>
+      </button>
     </li>
   ));
 

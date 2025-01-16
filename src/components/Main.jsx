@@ -39,6 +39,11 @@ const Main = () => {
     }
   };
 
+  // Delete function to delete the ingredient
+  const deleteIngredient = (ingredient) => {
+    setIngredients((prevIngredients) => prevIngredients.filter((i) => i !== ingredient));
+  };
+
   return (
     <main className='w-full pt-7 px-7 flex flex-col justify-center items-center'>
       {/* Add ingredient form */}
@@ -57,7 +62,7 @@ const Main = () => {
       </form>
 
       {/* Ingredient list & get recipe button */}
-      <Ingredients ingredients={ingredients} handleClick={handleClick} loading={loading} />
+      <Ingredients ingredients={ingredients} handleClick={handleClick} handleDelete={deleteIngredient} loading={loading} />
 
       {/* Error */}
       {error && <p className='mt-5 text-red-500 text-sm'>{error}</p>}
