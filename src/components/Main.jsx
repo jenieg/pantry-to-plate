@@ -13,6 +13,9 @@ const Main = () => {
   // Loading state
   const [loading, setLoading] = useState(false);
 
+  // Error state
+  const [error, setError] = useState('');
+
   //add ingredient function
   const addIngredient = (formData) => {
     const newIngredient = formData.get('ingredient');
@@ -28,6 +31,7 @@ const Main = () => {
       const recipeMarkdown = await getRecipeFromMistral(ingredients);
       setRecipe(recipeMarkdown); // Store the markdown response
     } catch (error) {
+      setError('Failed to generate recipe. Please try again.');
       console.error('Error fetching recipe:', error);
     } finally {
       // Stop loading
@@ -54,6 +58,9 @@ const Main = () => {
 
       {/* Ingredient list & get recipe button */}
       <Ingredients ingredients={ingredients} handleClick={handleClick} loading={loading} />
+
+      {/* Error */}
+      {error && <p className='mt-5 text-red-500 text-sm'>{error}</p>}
 
       {/* formated recipe  */}
       {recipe && <Recipe recipe={recipe} />}
