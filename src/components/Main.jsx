@@ -19,7 +19,7 @@ const Main = () => {
   //add ingredient function
   const addIngredient = (formData) => {
     const newIngredient = formData.get('ingredient');
-    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    if (!ingredients.includes(newIngredient)) setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   };
 
   //button click function
