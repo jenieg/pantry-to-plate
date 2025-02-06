@@ -11,5 +11,3 @@ This application is built with React+Vite and styled with Tailwind. It utilizes 
 
 ### Take Aways
 I learned so much while creating this project; Everything from managing state and passings props in React to creating a netlify function to proxy my API key. I have many exciting ideas for features that I can see myself returning to this project many times in the future, both as a developer and an user!
-
-Live Link: https://pantry2plate.netlify.app/
